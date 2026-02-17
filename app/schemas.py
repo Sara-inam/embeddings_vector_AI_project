@@ -17,5 +17,10 @@ class OrderRead(OrderBase):
     # embedding: Optional[List[float]] = None
     created_at: Optional[datetime] = None   
 
+class PredictionResponse(BaseModel):
+    next_product: str
+    reason: str
+    suggested_quantity: int
+
     class Config:
         from_attributes = True

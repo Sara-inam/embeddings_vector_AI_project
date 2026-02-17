@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine
 from app.models import Base
-from app.routes import order_routes
+from app.routes import order_routes, prediction_routes
 # from app.dummy_data import insert_dummy_orders
 from dotenv import load_dotenv
 import os
@@ -36,7 +36,9 @@ Base.metadata.create_all(bind=engine)
 
 # Include routes
 app.include_router(order_routes.router)
+app.include_router(prediction_routes.router)
 
 @app.get("/")
 def read_root():
     return {"message": "API is ready!"}
+
